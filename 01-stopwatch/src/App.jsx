@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App ()
@@ -22,7 +22,30 @@ function App ()
 
   return (
     <>
-      
+      <h1 className='text-3xl font-bold underline'>01-StopWatch</h1>
+      <div>
+        <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
+        <span>{("0" + Math.floor((time / 10) % 100)).slice(-2)}</span>
+      </div>
+      <div>
+        {running ? (
+          <button
+            onClick={() => setRunning(false)}
+          >Stop</button>
+        ): (
+          <button
+            onClick={() => setRunning(true)}
+          >Start</button>
+        )}
+        <button
+          onClick={() =>
+          {
+            setTime( 0 )
+            setRunning( false )
+          }}
+        >Reset</button>
+      </div>
     </>
   )
 }
